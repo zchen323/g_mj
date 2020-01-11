@@ -28,7 +28,9 @@ public class Util {
 
         List<Image> result = new ArrayList<>();
         for(Image image : info.getImages()){
-            image.setHref(info.getBaseURL() + image.getName());
+            if(image.getHref() == null || image.getHref().isEmpty()) {
+                image.setHref(info.getBaseURL() + image.getName());
+            }
         }
         return info.getImages();
     }

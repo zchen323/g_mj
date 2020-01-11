@@ -1,0 +1,180 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+  <script type="text/javascript" src="js/vue-gallery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <title>明明 & 静静 Gallery</title>
+</head>
+
+<body>
+
+<style type="text/css">
+  .image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+  }
+</style>
+
+<div id="app">
+    <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              明明 & 静静 Gallery
+            </h1>
+            <h2 class="subtitle">
+              
+            </h2>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+          &nbsp;
+      </div>
+ 
+      <div class="container">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="list is-haverable" >
+                    <a 
+                        class="list-item" 
+                        v-for="catelog, catelogIndex in catelogs"
+                        @click="switchImages(catelog)">{{catelog.description}}</a>
+                </div>  
+            </div>
+            <div class="column">
+                <div>
+                  <p>{{catelogDesc}}</p>
+                </div>
+                <gallery 
+                    :images="images" :index="index" @close="index = null"></gallery>
+                <div
+                    class="image"
+                    v-for="image, imageIndex in images"
+                    @click="index = imageIndex"
+                    :style="{ backgroundImage: 'url(' + image.href + ')', width: '150px', height: '150px' }">
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        catelogs: [],
+        catelogDesc: '',
+        images: [
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1525.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1530.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1538.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1540.jpg',
+          },  
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1557.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1558.JPG',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1567.png',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1568.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/7PgimhzpRZUjfGxJw5GLQ4m5-T0FnhOzVWvRZI8ANqf0znUGqJh1qroY9PyW9IJ8HeNDSklrS2ClozGggXWVjAffg1PjBSnMM0zo5440rssO-cmFITDwOeLw2ZXZbNNowOeZU3XUAJvYlBxRkCUWY8TG8jF1K5O4zXRhuVE68TAuVWcbve3xNDLba4mxiAksazCB6l6_g4gIjZ1W9tOEe7HheiqwAMXLYuJchbCocQwB_M6Z5Ub9O3VAco28YIhCcr4XcNR0tmvXsCJvyDQRj-SS0Q1q_Hksm_duwM5cCNZlTwPKppF_bHL75rKKSvyZ-sZ9pjPNGK9M91VDewm_Nkoci_mJ9w8i18NgSInfBXWRaa7EEhBeWdM0niDPjIJeRvl0VCUmYuzQlpuAdJlEDoxs2bzR80A-maEbRB1xEcI9uEwbfKYPSImneuNQP4I5XEKf7PfOz2ko6NaMvwCaBXCG-8-TNw4mgCZBrV_xc5D0j6a9pKgctFpKifMChZLfN7qCj1aIA9K0E37wN9Tqoh18cZ6UlZEyeL8NtlHeXmNbmO3HGIA09eDpRNSPWtdBXff_iPGwq-5Nn3sR-BBtDtIFm0ise94-1qRQCqPVknhnm4XNL-FnxdFTLugTGgRpBMPA0m4DGKoqPhEntIpb0wi9u0XfXDIxKepyPoHLDDyN5NgMt4StZWyV=w1056-h1406-no',
+          },
+          {
+            title:'',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/5_Pv7lRghs6pJBKG-IQG_cvxEZW4hwb74uCBUKh8RK_pSPHuXsJzO5oFypIodFAKoHFTYWTMfRcngGDl_mWQ3JI8BffftNI6u8VLgIz5HY-TqeXSiJDzrjnAwJQ-5NQbgDZ5qHy_SQx_g-AG55XznGby0Ik5NonA1naJkvelVcPfLKilVBdD04m04eFsaaGJhwUofJvHHuAJ2UgSfGqmpwyx3xY-aEOMiedyRrxc74tgwvmZ2mSrhSz-L06y5amMOz0EnOT_fh_47q2Y5J1OXs1wNo_GXIBOHKcaCdFQC8oH-E6yBKesHI50CoxmUWcecvqUX1jPHmL_cF2G7OLuhBO0GGp4521W2-vrSLS7Had8ZT_naP8H7sXfNX0xSVQrafrWJKnF14FQMGrPVfDB25bl1VKA2fmunxQbQwjGtyno13MoMP0hwU-jg73_BRgXoU-ag3suo9waghjoyoA7wIMw2AamhL6ChzBYwm9VdUrOqjuT3nP5OjxA5JijUxJueqzjaQ0ijbtVuTUd5T3bZxquTbX-K8zpWxAgp4R0tXOBz-5H1RMl122uPWLv4w8JfP10qDe25fhppRktd765oP-Hm4ximM5dnaOgUBQTcMWKirwWcqSfQBXbE87PzgDUMGbPLSkKta6PMQmLBcSQwR2YyxfJRhARwTWD7ZImCFfHxOKOWnLlynk6=w1056-h1406-no'
+          }
+          
+          
+        ],
+        index: null
+      };
+    },
+
+    components: {
+      'gallery': VueGallery
+    },
+    mounted() {
+        var uri = "/image/catelog";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catelogs = response.data;
+                vm.switchImages(vm.catelogs[0]);
+                console.log(response);
+                console.log(vm.catelogs[0].description)
+            }, function(error){
+                console.log(error);
+            });
+    },
+    methods: {
+        switchImages: function(cat){
+            this.catelogDesc = cat.description;
+            var uri = "/image/" + cat.id;
+            var vm = this;
+            axios.get(uri).then(function(response){
+               vm.images = response.data;
+               console.log(response) ;    
+            }, function(error){
+                console.log(error.statusText);
+                console.log(error);
+            });     
+        },
+        loadCatelogs: function(){
+            var uri = "/image/catelog";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catelogs = response.data;
+                console.log(ressponse);
+            }, function(error){
+                console.log(error);
+            });
+        }
+    }
+  });
+</script>
+
+</body>
+</html>
