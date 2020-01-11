@@ -1,0 +1,175 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+  <script type="text/javascript" src="js/vue-gallery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <title>明明 & 静静 Gallery</title>
+</head>
+
+<body>
+
+<style type="text/css">
+  .image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+  }
+</style>
+
+<div id="app">
+    <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              明明 & 静静 Gallery
+            </h1>
+            <h2 class="subtitle">
+              
+            </h2>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+          &nbsp;
+      </div>
+ 
+      <div class="container">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="list is-haverable" >
+                    <a 
+                        class="list-item" 
+                        v-for="catelog, catelogIndex in catelogs"
+                        @click="switchImages(catelog)">{{catelog.description}}</a>
+                </div>  
+            </div>
+            <div class="column">
+                <div>
+                  <p>{{catelogDesc}}</p>
+                </div>
+                <gallery 
+                    :images="images" :index="index" @close="index = null"></gallery>
+                <div
+                    class="image"
+                    v-for="image, imageIndex in images"
+                    @click="index = imageIndex"
+                    :style="{ backgroundImage: 'url(' + image.href + ')', width: '150px', height: '150px' }">
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        catelogs: [],
+        catelogDesc: '',
+        images: [
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1525.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1530.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1538.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1540.jpg',
+          },  
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1557.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1558.JPG',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1567.png',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1568.jpg',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://raw.githubusercontent.com/zchen323/MJ/master/src/resource/IMG_1540.jpg',
+          },
+          
+          
+        ],
+        index: null
+      };
+    },
+
+    components: {
+      'gallery': VueGallery
+    },
+    mounted() {
+        var uri = "/image/catelog";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catelogs = response.data;
+                vm.switchImages(vm.catelogs[0]);
+                console.log(response);
+                console.log(vm.catelogs[0].description)
+            }, function(error){
+                console.log(error);
+            });
+    },
+    methods: {
+        switchImages: function(cat){
+            this.catelogDesc = cat.description;
+            var uri = "/image/" + cat.id;
+            var vm = this;
+            axios.get(uri).then(function(response){
+               vm.images = response.data;
+               console.log(response) ;    
+            }, function(error){
+                console.log(error.statusText);
+                console.log(error);
+            });     
+        },
+        loadCatelogs: function(){
+            var uri = "/image/catelog";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catelogs = response.data;
+                console.log(ressponse);
+            }, function(error){
+                console.log(error);
+            });
+        }
+    }
+  });
+</script>
+
+</body>
+</html>
