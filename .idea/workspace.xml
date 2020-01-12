@@ -2,33 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74045fb6-23c1-4768-b54f-77eedd4e0132" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zchen323/mj/rest/ImageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/appengine/java8/HelloAppEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/example/appengine/java8/HelloAppEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/com/example/appengine/java8/HelloAppEngineTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/zchen323/mj/rest/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/zchen323/mj/rest/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/example/appengine/java8/HelloAppEngineTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/exploded-helloworld/WEB-INF/classes/com/example/appengine/java8/HelloAppEngine.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/exploded-helloworld/WEB-INF/classes/com/zchen323/mj/rest/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/exploded-helloworld/WEB-INF/classes/com/zchen323/mj/rest/Util.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/helloworld-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/helloworld-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.example.appengine.java8.HelloAppEngineTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.example.appengine.java8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.example.appengine.java8.HelloAppEngineTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/WEB-INF/appengine-generated/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/staged-app/WEB-INF/appengine-generated/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/WEB-INF/classes/com/example/appengine/java8/HelloAppEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/WEB-INF/classes/com/zchen323/mj/rest/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/staged-app/WEB-INF/classes/com/zchen323/mj/rest/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/WEB-INF/min-quickstart-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/staged-app/WEB-INF/min-quickstart-web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/WEB-INF/quickstart-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/staged-app/WEB-INF/quickstart-web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/staged-app/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/staged-app/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zchen323/mj/rest/MyResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zchen323/mj/rest/MyResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zchen323/mj/rest/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zchen323/mj/rest/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,6 +91,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1VdXFtm3u02YWryTd9nZm8Ez29f" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>

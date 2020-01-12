@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Vue Gallery Youtube</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+      <script type="text/javascript" src="https://unpkg.com/vue-gallery"></script>
+      <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-youtube.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-video.js"></script>
+
+  <style id="compiled-css" type="text/css">
+      .image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+  }
+  </style>
+
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">//<![CDATA[
+
+    window.onload=function(){
+      
+new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      images: [
+        {
+          title: 'A YouYube video',
+          href: 'https://www.youtube.com/watch?v=gFYotwHVrFQ',
+          type: 'text/html',
+          youtube: 'gFYotwHVrFQ',
+          poster: 'https://img.youtube.com/vi/gFYotwHVrFQ/maxresdefault.jpg'
+        },
+        {
+          title: 'A YouYube video 2',
+          href: 'https://www.youtube.com/watch?v=LY3yOTPQNV4',
+          type: 'text/html',
+          youtube: 'LY3yOTPQNV4',
+          poster: 'https://img.youtube.com/vi/s5iUsaPPtnk/maxresdefault.jpg'
+        },
+        {
+          title: 'Image',
+          href: 'https://dummyimage.com/1600/ffffff/000000',
+          type: 'image/jpeg',
+          poster: 'https://dummyimage.com/350/ffffff/000000'
+      	}
+      ],
+      index: null
+    };
+  },
+
+  components: {
+    'gallery': VueGallery
+  }
+});
+
+    }
+
+  //]]></script>
+
+</head>
+<body>
+    <div id="app">
+  <gallery 
+  :images="images" 
+  :index="index" 
+  :options="{youTubeVideoIdProperty: 'youtube', youTubePlayerVars: undefined, youTubeClickToPlay: true}"
+  @close="index = null"
+  ></gallery>
+  <div
+    class="image"
+    v-for="image, imageIndex in images"
+    @click="index = imageIndex"
+    :style="{ backgroundImage: 'url(' + image.poster + ')', width: '300px', height: '200px' }"
+  ></div>
+</div>
+
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "djqcrm8m"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+</body>
+</html>

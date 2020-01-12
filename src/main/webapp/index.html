@@ -48,13 +48,13 @@
                 <div class="list is-haverable" >
                     <a 
                         class="list-item" 
-                        v-for="catelog, catelogIndex in catelogs"
-                        @click="switchImages(catelog)">{{catelog.description}}</a>
+                        v-for="catalog, catalogIndex in catalogs"
+                        @click="switchImages(catalog)">{{catalog.description}}</a>
                 </div>  
             </div>
             <div class="column">
                 <div>
-                  <p>{{catelogDesc}}</p>
+                  <p>{{catalogDesc}}</p>
                 </div>
                 <gallery 
                     :images="images" :index="index" @close="index = null"></gallery>
@@ -74,8 +74,8 @@
     el: '#app',
     data: function () {
       return {
-        catelogs: [],
-        catelogDesc: '',
+        catalogs: [],
+        catalogDesc: '',
         images: [
           {
             title: '',
@@ -133,21 +133,21 @@
       'gallery': VueGallery
     },
     mounted() {
-        var uri = "/image/catelog";
+        var uri = "/image/catalog/z";
             var vm = this;
             axios.get(uri).then(function(response){
-                vm.catelogs = response.data;
-                vm.switchImages(vm.catelogs[0]);
+                vm.catalogs = response.data;
+                vm.switchImages(vm.catalogs[0]);
                 console.log(response);
-                console.log(vm.catelogs[0].description)
+                console.log(vm.catalogs[0].description)
             }, function(error){
                 console.log(error);
             });
     },
     methods: {
         switchImages: function(cat){
-            this.catelogDesc = cat.description;
-            var uri = "/image/" + cat.id;
+            this.catalogDesc = cat.description;
+            var uri = "/image/z/" + cat.id;
             var vm = this;
             axios.get(uri).then(function(response){
                vm.images = response.data;
@@ -157,11 +157,11 @@
                 console.log(error);
             });     
         },
-        loadCatelogs: function(){
-            var uri = "/image/catelog";
+        loadCatalogs: function(){
+            var uri = "/image/catalog/z";
             var vm = this;
             axios.get(uri).then(function(response){
-                vm.catelogs = response.data;
+                vm.catalogs = response.data;
                 console.log(ressponse);
             }, function(error){
                 console.log(error);

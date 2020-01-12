@@ -36,23 +36,23 @@ public class MyResource {
     }
 
     @GET
-    @Path("catelog")
+    @Path("catalog/{type}")
     @Produces("application/json")
-    public Response getCatelog() throws Exception{
+    public Response getCatelog(@PathParam("type") String type) throws Exception{
 
         List<Catelog> list = new ArrayList<Catelog>();
 //        list.add(new Catelog("12345", "this is a test"));
 //        list.add(new Catelog("23456", "this is test 2"));
-        list = Util.loadCateLog();
+        list = Util.loadCateLog(type);
         return Response.ok().entity(list).build();
     }
 
     @GET
-    @Path("{id}")
+    @Path("{type}/{id}")
     @Produces("application/json")
-    public Response getImages(@PathParam("id") String id) throws IOException {
+    public Response getImages(@PathParam("type") String type, @PathParam("id") String id) throws IOException {
 
-        List<Image> result = Util.loadImages(id);
+        List<Image> result = Util.loadImages(type, id);
 
 
         return Response.ok().entity(result).build();

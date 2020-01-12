@@ -1,0 +1,149 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+  <script type="text/javascript" src="/js/vue-gallery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <title>优优 & 嘎嘎 Gallery</title>
+</head>
+
+<body>
+
+<style type="text/css">
+  .image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+  }
+</style>
+
+<div id="app">
+    <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              优优 & 嘎嘎 Gallery
+            </h1>
+            <h2 class="subtitle">
+              
+            </h2>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+          &nbsp;
+      </div>
+ 
+      <div class="container">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="list is-haverable" >
+                    <a 
+                        class="list-item" 
+                        v-for="catalog, catalogIndex in catalogs"
+                        @click="switchImages(catalog)">{{catalog.description}}</a>
+                </div>  
+            </div>
+            <div class="column">
+                <div>
+                  <p>{{catalogDesc}}</p>
+                </div>
+                <gallery 
+                    :images="images" :index="index" @close="index = null"></gallery>
+                <div
+                    class="image"
+                    v-for="image, imageIndex in images"
+                    @click="index = imageIndex"
+                    :style="{ backgroundImage: 'url(' + image.href + ')', width: '150px', height: '150px' }">
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        catalogs: [],
+        catalogDesc: '',
+        images: [
+          {
+            title: '',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/6-7aPseduLY_JdfqS6f0bp1yB2My4oEA2wxNyfYdzsff6vxdSG9IsyhJci9QKQraAjmWCxVTrhz3BXxAwvgrVrYT53dHvFhSKxP8WumvuaBGWmdOshCDLZb-JSm3GNACykX_UYfnBpxJwJbSMdjdsmJXX3gkgXKbBO25usd_NWpVikTW7TCuOQSXR1HBBNVJ3JtsKzsxyFutN5t_XtfUEziZWityQo8ccLydYAjiJJHs8iPNCcip1Vzq1DQIGsWM5OBxM7nuI69gdREPh3htwR8Ev3gJKtOrmYjALqafCrFouv4EiroBOu0aT3R3QpWYfGdqpgswRDPU_GwuoVnc3AItyBHm1fi6RnE5h-H5SQcylF67VUDUmpXPDD5ZRz3cPM9JJC66hl09zXC7M8YBDOtWjjJZOulRAFLavRfnu-dndhDbXO56hgp0p7bOI4gL6OUW_IRiOWAe2HiWF9z6ORD2ryy_NUdUc9mTuvEcIpZBWIxvqG6ZLuDJfWzhhth8E9PYE4f57PBvT-0K69GE8WxiCaFehWT_XxYUmbCTRhidhrfrPvhYGvMinS9h2IKIq5XUj22J2cTpUkCmRhYSDhCRlLbkExWjXrnZEAL6qcL0M7NU4JgJyqt9l2J5mKrH3AhXdcehC_x_wVJBij2_VzWxr9nVryO2canK1HKqi0dUFE8bbEdlSGxl=w1079-h1356-no',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/Re0-lw8ALcpTJsI3lxn2kXsEOnbUbmSDvMMS_4KCdJjRFVpC2MvKV3z6DTGk9HYlMBzBnOSMpIoxGoZUeDHomoEkYeSctazvQ1eTWO5k_kHP6urm0mv3VdO8u8lOwoWK9Ad4yJUwAOHwp6h-Aq--8mYtLtDW-AQlUtQe1NNMOUlhOaQSKy9dZhD4n7JxKmFEYz9anGaNU77mQX9wyjnTIMfBhsTrzZlzHU2Qfg_sTLHD5sxNhQLcHKEl685iGrTO9j6EKM97u8txhwmKsi40-59iDTasjOHaHX0ZPmiuDu0jaXHy2-3iImMfxZvogHAF5zeZXO_I0Mu7ciexuS1X8tp7JCXoabbQYasYD8G6eOJHPh4W9z24PWdvE4FsW07E8v6GP52ILjjrURRsXXizi__kqNdI2y7Q-bV52X-7SPdTHUnBuyASwgEKKlMWbtbENHDJZTXKCpH5wDAen3mMVr3n1NYwZmTKOGu5ULb6X9qIit_SZtrlPw9QZ4Zp4dLWz1uu_C5QIvUn7tP9-2vWFu9klUQFVifAzjNacgbIb5uh-BqH9JRLCzrJj09ZQTY5CxgqjzpG4WazPBqrwYtl8HY-2nDx6ecrAsrMMzp9fZy8_w-FFA4soPeVl8J5ulFNQffONwXMYX1ubmPtkC9zY8xKgK30OReUoKG9uNMACm3-P5d0Nj_zIWZk=w1620-h1080-no',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/LSw6iMi8puHNRwjVySF6ZQsyEiqd1ob5aR5PXSbCqsYl_2ibM7yfewWilMXImN1U-ctEh8162cTyFVk2BvzoLCFRfi13zTvsstStd0yqtEFXTP8vqIknvZCz562wyvbfz5O1hOtY-w4S9LpcqjBpYTZTDMW71VUkpnfX6lxvj9HUctqApNJum_A3L8nJjEuoMhhX0RZmImMm3sCa5cfRDVapAKolEyNtfUeAeERg58mH-XisFQS8mAKZ5gS-ZfX8kM-SkvBHYr_OxZR7CC3xu4RrFJd2BHvkzSM69RaW6uNWhpvF0DzbW5mWpiFa0UQ8RMlO6_A-16tJth23cLPac29dvoDX9FcnFLD9sUWn-CXbcXjaObQeLkGTyF0T4lnEfSdDIPP6LPNN_QpKuSd_67XTFuLw7CfbOy2nDm-p1io1mrbOQZT-nkwulNyAwJbVTA2J7DAzP1Zdz0yFAiU6BXDLShbGJlUHQyITyRPEFFoNXdco8bWRp7rGSbAm3HrSqlf9PSv84zsE5tmHY0USa5uVPCA-1YoCuvU-C_b4KzBjA0ZN5MnYtEwwVYjRoWqk932KvYFRqpfnoJ6myy1D1h5EWND7cJ2QlSISSvvkFpaTXUM9RS_O8qfHN877191ItU_KkqvYEr1FiktSm_BRaqUDdTvmaganUX-fwPRUJdfjZaNtLzCYwE1E=w1056-h1406-no',
+          },
+          {
+            title: '',
+            description: '',
+            href: 'https://lh3.googleusercontent.com/i9j4BmqyhgY8Cptxy4ay0-uU8HRT-ErLxmbDe1hX4KPK-o8A3Ei4K3t5Yx3WrUAK0KisUhC9F0NGjlr1oHkXGfv-eBq7nWHINjWejp_NrCoj4R3s_8WKE7ao-z43jmxjTTHr37tUBAnfTSt0xpV36DiBfau1I0qazNB667-HJUEdCANxknwDRszFxdKRv4gMAfTNhi9AsomKnR7poprCRO7LcBW1lq9GdCTucnnjDWk8x-o5XQlQU5OQ6UvaCU_c_ngtwoLNkDlbSjNbSTT5BgYu-yxg_u2azkN-qdnug_GdCL9K3X4I3znjDNG2SPpu-O_IKVFlJNXShQyXNATURG87KPd8ni9S3Sju88WzvIuUCoZnI7ZjbbehOTXPgTDAkpAz2pL3G2AFJ_3SxLftSists9wc2_tS1ritqfj7DjdKXgBDqLeqW6svq7oz6Lfi9E-COewgpWNe3sB3RjK3f_zab2HrOBesOeLz7jWP1I2U0N_5vBAkGFhsDQTcGUiCWaD9fGYUp6xNi-D4myn329k2UF7KvWMzJIybJjJLA_lQd0SvfgEP67ZdLn6Upvn3oM9m1kaHm5ubbRx8LSxhPxpPiDorwsc1IFxugo3Lxy3esdcqPY4GNiEOogix1jbvZvREboda04aWZ_tLvyZ0SEwY57stk8VzLS0FrI5WAkMbHnSPxp0vNRia=w1056-h1406-no',
+          }  
+          
+        ],
+        index: null
+      };
+    },
+
+    components: {
+      'gallery': VueGallery
+    },
+    mounted() {
+        var uri = "/image/catalog/c";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catalogs = response.data;
+                vm.switchImages(vm.catalogs[0]);
+                console.log(response);
+                console.log(vm.catalogs[0].description)
+            }, function(error){
+                console.log(error);
+            });
+    },
+    methods: {
+        switchImages: function(cat){
+            this.catalogDesc = cat.description;
+            var uri = "/image/c/" + cat.id;
+            var vm = this;
+            axios.get(uri).then(function(response){
+               vm.images = response.data;
+               console.log(response) ;    
+            }, function(error){
+                console.log(error.statusText);
+                console.log(error);
+            });     
+        },
+        loadCatalogs: function(){
+            var uri = "/image/catalog/c";
+            var vm = this;
+            axios.get(uri).then(function(response){
+                vm.catalogs = response.data;
+                console.log(ressponse);
+            }, function(error){
+                console.log(error);
+            });
+        }
+    }
+  });
+</script>
+
+</body>
+</html>

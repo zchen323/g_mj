@@ -7,6 +7,18 @@ threadsafe: True
 auto_id_policy: default
 api_version: 'user_defined'
 handlers:
+- url: (/.*/)
+  static_files: __static__\1index.html
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
+- url: (/)
+  static_files: __static__\1index.html
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
 - url: (/.*)
   static_files: __static__\1
   upload: __NOT_USED__
@@ -18,10 +30,6 @@ handlers:
   login: optional
   secure: optional
 - url: /_ah/.*
-  script: unused
-  login: optional
-  secure: optional
-- url: /hello
   script: unused
   login: optional
   secure: optional
